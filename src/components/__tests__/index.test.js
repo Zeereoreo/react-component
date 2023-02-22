@@ -21,6 +21,6 @@ describe('Autocomplete UI 컴포넌트 기능 테스트', () => {
   require('./Autocomplete.test');
 });
 
-// describe('ClickToEdit UI 컴포넌트 기능 테스트', () => {
-//   require('./ClickToEdit.test');
-// });
+describe('ClickToEdit UI 컴포넌트 기능 테스트', () => {
+  require('./ClickToEdit.test');
+});
