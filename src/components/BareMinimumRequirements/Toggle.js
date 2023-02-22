@@ -1,3 +1,4 @@
+import { getByDisplayValue } from '@testing-library/react';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -13,6 +14,17 @@ const ToggleContainer = styled.div`
     border-radius: 30px;
     background-color: #8b8b8b;
     // TODO : .toggle--checked 클래스가 활성화 되었을 경우의 CSS를 구현합니다.
+
+    background-position: right;
+      background: linear-gradient(to left, #8b8b8b 50%, blue 50%) right;
+      background-size: 200%;
+      transition: 1s;
+    &.toggle--checked{
+      background-position: left;
+      background: linear-gradient(to right, blue 50%, #8b8b8b 50%) left;
+      background-size: 200%
+      transition: 1s
+    }
   }
 
   > .toggle-circle {
@@ -24,11 +36,19 @@ const ToggleContainer = styled.div`
     border-radius: 50%;
     background-color: #ffffff;
     // TODO : .toggle--checked 클래스가 활성화 되었을 경우의 CSS를 구현합니다.
+    transition: 1s;
+    &.toggle--checked{
+      left: 27px;
+      transition: 1s;
+    }
   }
 `;
 
 const Desc = styled.div`
   // TODO : 설명 부분의 CSS를 구현합니다.
+  display: flex;
+  justify-content : center;
+  margin : 0.5rem;
 `;
 
 export const Toggle = () => {
@@ -47,9 +67,10 @@ export const Toggle = () => {
       >
         {/* TODO : 아래에 div 엘리먼트 2개가 있습니다. 각각의 클래스를 'toggle-container', 'toggle-circle' 로 지정하세요. */}
         {/* TIP : Toggle Switch가 ON인 상태일 경우에만 toggle--checked 클래스를 div 엘리먼트 2개에 모두 추가합니다. 조건부 스타일링을 활용하세요. */}
-        <div className='toggle-container'/>
-        <div className='toggle-circle'/>
+        <div className={`toggle-container ${isOn ? "toggle--checked" : " "}`} />
+        <div className={`toggle-circle ${isOn ? "toggle--checked" : " "}`} />
       </ToggleContainer>
+      <Desc><div>{isOn ? 'Toggle Switch ON': 'Toggle Switch OFF'}</div></Desc>
       {/* TODO : Desc 컴포넌트를 활용해야 합니다. */}
       {/* TIP:  Toggle Switch가 ON인 상태일 경우에 Desc 컴포넌트 내부의 텍스트를 'Toggle Switch ON'으로, 그렇지 않은 경우 'Toggle Switch OFF'가 됩니다. 조건부 렌더링을 활용하세요. */}
     </>
