@@ -63,7 +63,19 @@ export const Tab = () => {
   return (
     <>
       <div>
-        
+        <TabMenu>
+          {/*TODO: 아래 하드코딩된 내용 대신에, map을 이용한 반복으로 코드를 수정합니다.*/}
+          {/*TIP: li 엘리먼트의 class명의 경우 선택된 tab 은 'submenu focused' 가 되며, 
+                  나머지 2개의 tab은 'submenu' 가 됩니다.*/}
+          {menuArr.map((el, index)=>{
+            return <li key={index}
+                      className={`${index === currentTab? 'submenu focused' : 'submenu'}`}
+                      onClick={()=>selectMenuHandler(index)}>{el.name}</li>
+          })}
+        </TabMenu>
+        <Desc>
+          {/*TODO: 아래 하드코딩된 내용 대신에, 현재 선택된 메뉴 따른 content를 표시하세요*/}
+          <p>{menuArr[currentTab].content}</p>
         </Desc>
       </div>
     </>
